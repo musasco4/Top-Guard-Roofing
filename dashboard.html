@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<title>TopGuard Roofing — Bookings Dashboard</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAADNklEQVRYhe2XTWhTWRiGn+/cmzS5jVWrVse22C6KNgVn40JHZ1aV0Y26cQwV3ChaFBdWEd0ouBr8GQaFMZaRcSUu3LhyMSLjT6GgG8XqogyibRSr4k9LYmNzPxf3pk1a2yYx2o0vXLjnfOd8z3v+cm6EHFXVt/yqqu0oq4AaQCiPXOAZ8K9anBp6+rAnG/AADQ2hSNr5W4StZQJOpY8iHHjf//A0gAUQcRZf+EbwLHN9sGr+QHrw1V2pqmtZp6pXvxE8V8PGsqJWsGrBCWDZDBiwUa0wKD/NABwAhfUGmF9qghbLe0qX1BnAlNJ1S0A577icd1y2BbVEA2qKhguwI6h0hBTxy3sqlP1+uVjZxTS2gIMhZVPAG3Emp/63gBIEjn+Q0fpCVPAMBIBj4TH4R+BISjiUEob9NpsCyu9hpaLcBioETjpKq+3BPygcSArXRoSbI0JHUkj62+AXW/nDUZwC12NaAxGBM2FlpeURhhT2poTuzBjhbkbYnRTe+iZWWMpfjjKnABNTGpgnEHeUH334a4X2pHA/MzHzI1doTxkGfBPNRomHXWqmMTGpgR8MnHNcmoyX8bkLO5OGXnfyjI8zXps+1ys3WtDpuNRNMczPhhot6KxUlrfFmBuL8dgVdiYN/e7Uo8ka3ZU09KphbixGtC1GZ6WODmS8JhzDZqP8GVZq16xh0dGjAFzsTTDwX9f0dF+vFS6tWM0Gv3+6v5/4rdt0pODeuOXLm4Fmo8T9zWNXV4/Wh3PeC1VlTh+7upqIwOmw0jxuJvIM/GxDyDfYU8yvyTTK5gqJx8hVXvHKiNBoeZtpMC2sLZOBy2lh1rCX+8pI/hLkGXjhwuGU12BLmeDgfRB2pj9/ekq6Ccup7wYKuo737dlO2+aNRSVeWFPYh5aNt0cmzEQmM3YOo0ubiC5tKsrAZLnyJa4tkFCoHx+60dXNvQePWFJfWzIY4Elfghtd3ZNEdUBm1UbjwK4vopSuy8YYcwJIzwRdkbPmXd+D/1V13wzw/xlK9Fy3ANKDr+6EZi94A7Ti/1/82vDBOdLOy5f5d2NkUUtUbN2vSqsgtaDlMuMCL4AuRc4OJXquZwOfACpVB3aXIWYHAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABi0lEQVQ4jZ2Sv0tbYRSGn/f6Xc2VpgreiDQFwS6iWzdBqIJdO7jawbkuIq0o2lKoi4NDxR+bk/9EsUNRqUJFgkJFSEHEodgtNLEp5h6HWLxNUit5p+8czvuc8x2OAC+Z7h0HewF0AeL/OpF4nTv7uq5kuncCbOEOpipJGlEy3ZMFHtUDAI48ymPX1LBvDPt2G6DbUePPAsYaI543leMHMpZ/e9RAyVVmGoBXCeOZD/O/RBEx2xTR5kXMFT1KFZS/AD7wNjCeOOPNhfh4WR7up4m5wLgnY/ZCFGMe788jIVjpDBnsCHlZuDEDbF6KiYLo6whZ7QxpVgUgECwFEUMzU3yfnGa3VH0KeyVxPjnN4MwUi0FEoBggJXASGfkUnF+9qmsVnE9GPk4iFQecRjCaF/l/Wm+Up1x7GlXsoF45wLi+BTPj6UA/B58/1CxuD9vY+LQdT5kDjoFugPera+xnDm/tuLXzJR5mdf9hz4gZ6/WML9l4QzH34zDRkvoGPAZa7+AzICvZu9zZ0eIVE1Fw/4HYnQoAAAAASUVORK5CYII=">
+<link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIAC+AQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAYVJREFUeJydkjFLW2EUhp/3+l31inHxWsQIgi6iv0AQrNCuHVyt0FmXIFUUrTi4dOigqNk66Y+QdiitWMEiwYJS6iCSoXQMTTRi7nGIxdskVck7fedw3uec73AEeInkYApsEugFxMM6k3iTyx5vKZEcnAZ79whTlSSNK5EcOAX66gEAJx7lsWtqzDfGfLsP0O+o8WcBU40RL5vKcZeMjSuPGii5ykwDMNNsvPDh7aUoIhabItq9iJWiR6mC8g/AB5YDY8QZSxfi43V5uD8mVgKjVcbihSjGPN7fR7NgsydktDPkdeHODPD5WkwXxFBnSLonpEUVgECwHkQ8W5jj1+w8+6XqU/hWEr9n5xldmGMtiAgUA3QInERGPgXnV6/qVgXnk5GPk+iIA84jeJUX+f9a75SnXHseVeygXjnAuL0FM+P502GO9nZqFj8J2/nwaTeeMgf8APoBVtPvOcx8v7fjl68H8fBUbd0D42Zs1TO+ZCkvlz3elpgAzh7pM+CnZKlc9mTtBvgxcIaUR+VfAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.0/dist/umd/supabase.js" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --navy:#0D1B2A;
+    --navy-2:#14283d;
+    --red:#D62828;
+    --red-dark:#a51f1f;
+    --off:#F8F9FA;
+    --ink:#111111;
+    --slate:#5b6b7d;
+    --line:#e3e6e9;
+    --font-d:'Montserrat',sans-serif;
+    --font-b:'Inter',sans-serif;
+    --font-m:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{background:#F8F9FA;}
+  body{font-family:var(--font-b);color:var(--ink);background:var(--off);line-height:1.5;min-height:100vh;}
+  h1,h2,h3{font-family:var(--font-d);}
+  .mono{font-family:var(--font-m);}
+  button{font-family:var(--font-d);cursor:pointer;}
+  a{color:inherit;}
+
+  /* ---------- LOGIN SCREEN ---------- */
+  #loginScreen{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg, var(--navy) 0%, #0a1622 100%);padding:20px;background-color:var(--navy);
+  }
+  .login-card{
+    background:#fff;border-radius:8px;padding:44px 38px;width:100%;max-width:400px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.5);border-top:5px solid var(--red);
+  }
+  .login-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--navy);margin-bottom:6px;}
+  .login-logo span{color:var(--red);}
+  .login-card p.sub{color:var(--slate);font-size:14px;margin-bottom:28px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:7px;}
+  .field input{width:100%;padding:13px 14px;border:1.5px solid #dde2e7;border-radius:4px;font-family:var(--font-b);font-size:14.5px;color:var(--ink);background:#fbfcfd;}
+  .field input:focus{outline:none;border-color:var(--red);}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    font-family:var(--font-d);font-weight:800;font-size:14px;letter-spacing:.03em;text-transform:uppercase;
+    padding:15px 20px;border-radius:4px;border:none;background:var(--red);color:#fff;transition:background .2s;
+  }
+  .btn:hover{background:var(--red-dark);}
+  .btn:disabled{opacity:.6;cursor:not-allowed;}
+  .login-error{background:#fdecec;border:1px solid #f3b9b9;color:var(--red-dark);font-size:13px;padding:10px 14px;border-radius:4px;margin-bottom:16px;display:none;}
+  .login-error.show{display:block;}
+  .setup-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--slate);line-height:1.6;}
+  .setup-note code{background:#f1f3f5;padding:1px 5px;border-radius:3px;font-family:var(--font-m);font-size:11px;}
+
+  /* ---------- DASHBOARD SCREEN ---------- */
+  #dashScreen{display:none;min-height:100vh;background:var(--off);}
+  #dashScreen.show{display:block;}
+  header{background:var(--navy);color:#fff;padding:18px 0;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;}
+  .logo span{color:var(--red);}
+  .header-right{display:flex;align-items:center;gap:18px;}
+  .header-right .email{font-family:var(--font-m);font-size:12.5px;color:#b7c2cf;}
+  .btn-ghost{
+    background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:9px 16px;
+    border-radius:4px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;transition:all .2s;
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+
+  main{max-width:1200px;margin:0 auto;padding:36px 24px 80px;}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:32px;}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px 24px;}
+  .stat-card .n{font-family:var(--font-d);font-weight:900;font-size:30px;color:var(--navy);}
+  .stat-card .l{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:4px;}
+
+  .toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap;}
+  .search-box{position:relative;flex:1;min-width:220px;max-width:340px;}
+  .search-box input{width:100%;padding:11px 14px 11px 38px;border:1.5px solid var(--line);border-radius:4px;font-size:14px;background:#fff;}
+  .search-box input:focus{outline:none;border-color:var(--red);}
+  .search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--slate);}
+  .toolbar-actions{display:flex;gap:10px;}
+  .btn-small{background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:4px;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:8px;}
+  .btn-small:hover{background:var(--navy-2);}
+  .btn-small svg{width:14px;height:14px;}
+
+  .table-wrap{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  thead th{
+    text-align:left;font-family:var(--font-m);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--slate);background:var(--off);padding:12px 16px;border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  tbody td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#fafbfc;}
+  .b-name{font-weight:600;color:var(--navy);}
+  .b-date{font-family:var(--font-m);font-size:12px;color:var(--slate);white-space:nowrap;}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-family:var(--font-m);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;}
+  .pill.yes{background:#fdecec;color:var(--red-dark);}
+  .pill.no{background:#e9edf1;color:var(--slate);}
+  .pill.unknown{background:#f1f3f5;color:var(--slate);}
+  .msg-cell{max-width:220px;color:var(--slate);font-size:13px;}
+  .empty-state, .loading-state{padding:60px 20px;text-align:center;color:var(--slate);}
+  .empty-state svg, .loading-state svg{width:36px;height:36px;color:var(--slate);opacity:.4;margin:0 auto 14px;}
+  .error-banner{background:#fdecec;border:1px solid #f3b9b9;color:var(--red-dark);font-size:13.5px;padding:14px 18px;border-radius:6px;margin-bottom:20px;display:none;}
+  .error-banner.show{display:block;}
+
+  @media (max-width:760px){
+    .stats-row{grid-template-columns:1fr 1fr;}
+    .table-wrap{overflow-x:auto;}
+    table{min-width:760px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">TOP<span>GUARD</span></div>
+    <p class="sub">Bookings dashboard — staff sign in</p>
+    <div class="login-error" id="loginError"></div>
+    <form id="loginForm" onsubmit="return false;">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn" id="loginBtn">Sign In</button>
+    </form>
+  <!-- <div class="setup-note">
+      No account yet? Create one from your Supabase project under <strong>Authentication → Users → Add User</strong>, then sign in here with that email and password. See <code>supabase-setup-guide.md</code> for full steps.
+    </div> -->
+  </div>
+</div>
+
+<!-- ================= DASHBOARD SCREEN ================= -->
+<div id="dashScreen">
+  <header>
+    <div class="header-inner">
+      <div class="logo">TOP<span>GUARD</span> — Bookings</div>
+      <div class="header-right">
+        <span class="email" id="userEmail"></span>
+        <button class="btn-ghost" id="signOutBtn">Sign Out</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="error-banner" id="errorBanner"></div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="n" id="statTotal">–</div><div class="l">Total Bookings</div></div>
+      <div class="stat-card"><div class="n" id="statWeek">–</div><div class="l">Last 7 Days</div></div>
+      <div class="stat-card"><div class="n" id="statInsurance">–</div><div class="l">Insurance Claims</div></div>
+      <div class="stat-card"><div class="n" id="statToday">–</div><div class="l">Today</div></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search name, phone, email, address...">
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn-small" id="exportBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
+          Export CSV
+        </button>
+        <button class="btn-small" id="refreshBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="bookingsTable">
+        <thead>
+          <tr>
+            <th>Submitted</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Service</th>
+            <th>Insurance</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="bookingsBody"></tbody>
+      </table>
+      <div class="loading-state" id="loadingState">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div>Loading bookings…</div>
+      </div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6M9 16h6M9 8h6"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        <div>No bookings yet. New inspection requests will show up here.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Global safety net: if anything below throws — including unhandled promise
+// rejections from async calls — show it somewhere the user can actually see,
+// instead of failing silently. Errors before a successful login go to the
+// login screen's own error box, since #errorBanner lives inside the
+// dashboard screen and is invisible (display:none) until after sign-in.
+function reportGlobalError(msg){
+  const dash = document.getElementById('dashScreen');
+  if (dash && dash.classList.contains('show')) {
+    const banner = document.getElementById('errorBanner');
+    banner.textContent = msg;
+    banner.classList.add('show');
+  } else {
+    const le = document.getElementById('loginError');
+    le.textContent = msg;
+    le.classList.add('show');
+  }
+}
+window.addEventListener('error', (e) => {
+  reportGlobalError('A script error occurred: ' + e.message + '. Check the browser console for details.');
+});
+window.addEventListener('unhandledrejection', (e) => {
+  reportGlobalError('Request failed: ' + (e.reason && e.reason.message ? e.reason.message : e.reason) + '. Check the browser console for details.');
+});
+
+// ============================================================
+// Fill these in with your Supabase project's values —
+// Project Settings → API in your Supabase dashboard.
+// Same values as in topguard-roofing.html.
+// The URL should NOT have a trailing slash, e.g.
+// https://abcdefgh.supabase.co
+// ============================================================
+const SUPABASE_URL = 'https://hdhhfjyzvslehlqbpcws.supabase.co'.trim().replace(/\/$/, '');
+const SUPABASE_ANON_KEY = 'sb_publishable_WZyLOBQ_F6BccA98f845qA_NUMtURRq'.trim();
+
+const loginScreen = document.getElementById('loginScreen');
+const dashScreen = document.getElementById('dashScreen');
+const loginForm = document.getElementById('loginForm');
+const loginError = document.getElementById('loginError');
+const loginBtn = document.getElementById('loginBtn');
+const userEmail = document.getElementById('userEmail');
+const errorBanner = document.getElementById('errorBanner');
+
+let allBookings = [];
+let supabase = null;
+
+function showError(msg){
+  errorBanner.textContent = msg;
+  errorBanner.classList.add('show');
+}
+
+function configured(){
+  return SUPABASE_URL !== 'https://hdhhfjyzvslehlqbpcws.supabase.co' && SUPABASE_ANON_KEY !== 'sb_publishable_WZyLOBQ_F6BccA98f845qA_NUMtURRq';
+}
+
+if (!configured()) {
+  loginError.textContent = 'This dashboard isn\'t connected to Supabase yet — add your Project URL and anon key in the script near the bottom of this file (search for SUPABASE_URL).';
+  loginError.classList.add('show');
+} else if (typeof window.supabase === 'undefined') {
+  loginError.textContent = 'Could not load the Supabase library (the CDN script may be blocked). Check your internet connection or try a different browser/network.';
+  loginError.classList.add('show');
+} else if (!/^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL)) {
+  loginError.textContent = 'Your Supabase URL doesn\'t look right — it should look like https://abcdefgh.supabase.co with no trailing slash or extra text. Double-check what you pasted.';
+  loginError.classList.add('show');
+} else {
+  try {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  } catch (err) {
+    loginError.textContent = 'Failed to connect to Supabase: ' + err.message;
+    loginError.classList.add('show');
+  }
+}
+
+// ---------- Auth ----------
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  loginError.classList.remove('show');
+
+  if (!supabase) {
+    loginError.textContent = 'Dashboard isn\'t connected to Supabase yet — see the message above.';
+    loginError.classList.add('show');
+    return;
+  }
+
+  loginBtn.disabled = true;
+  loginBtn.textContent = 'Signing in...';
+
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+
+  let result;
+  try {
+    result = await supabase.auth.signInWithPassword({ email, password });
+  } catch (err) {
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'Sign In';
+    loginError.textContent = 'Network error reaching Supabase: ' + err.message;
+    loginError.classList.add('show');
+    return;
+  }
+
+  const { data, error } = result;
+
+  loginBtn.disabled = false;
+  loginBtn.textContent = 'Sign In';
+
+  if (error) {
+    let msg = error.message;
+    if (/email.*not.*confirm/i.test(msg)) {
+      msg += ' — go to Supabase → Authentication → Users, click your user, and check "Email Confirmed" (or recreate the user with "Auto Confirm User" checked).';
+    } else if (/invalid.*credentials/i.test(msg)) {
+      msg += ' — double check the email/password, or confirm this user exists under Supabase → Authentication → Users.';
+    }
+    loginError.textContent = msg;
+    loginError.classList.add('show');
+    return;
+  }
+
+  enterDashboard(data.user);
+});
+
+document.getElementById('signOutBtn').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  location.reload();
+});
+
+async function enterDashboard(user){
+  loginScreen.style.display = 'none';
+  dashScreen.classList.add('show');
+  userEmail.textContent = user.email;
+  await loadBookings();
+}
+
+// Restore session on page load if already signed in
+(async function checkSession(){
+  if (!supabase) return;
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session && session.user) {
+    enterDashboard(session.user);
+  }
+})();
+
+// ---------- Data loading ----------
+async function loadBookings(){
+  document.getElementById('loadingState').style.display = 'block';
+  document.getElementById('emptyState').style.display = 'none';
+  errorBanner.classList.remove('show');
+
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  document.getElementById('loadingState').style.display = 'none';
+
+  if (error) {
+    showError('Could not load bookings: ' + error.message + '. Make sure the "Authenticated can view bookings" policy exists on the bookings table.');
+    return;
+  }
+
+  allBookings = data || [];
+  renderStats(allBookings);
+  renderTable(allBookings);
+}
+
+function renderStats(rows){
+  const now = new Date();
+  const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const sevenDaysAgo = new Date(now.getTime() - 7*24*60*60*1000);
+
+  const total = rows.length;
+  const today = rows.filter(r => new Date(r.created_at) >= startOfToday).length;
+  const week = rows.filter(r => new Date(r.created_at) >= sevenDaysAgo).length;
+  const insurance = rows.filter(r => (r.insurance_claim || '').toLowerCase() === 'yes').length;
+
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statToday').textContent = today;
+  document.getElementById('statWeek').textContent = week;
+  document.getElementById('statInsurance').textContent = insurance;
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : str;
+  return div.innerHTML;
+}
+
+function formatDate(iso){
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, { month:'short', day:'numeric', year:'numeric' }) + ' · ' +
+         d.toLocaleTimeString(undefined, { hour:'numeric', minute:'2-digit' });
+}
+
+function renderTable(rows){
+  const tbody = document.getElementById('bookingsBody');
+  const emptyState = document.getElementById('emptyState');
+
+  if (rows.length === 0) {
+    tbody.innerHTML = '';
+    emptyState.style.display = 'block';
+    return;
+  }
+  emptyState.style.display = 'none';
+
+  tbody.innerHTML = rows.map(r => {
+    const insurance = (r.insurance_claim || '').toLowerCase();
+    const pillClass = insurance === 'yes' ? 'yes' : insurance === 'no' ? 'no' : 'unknown';
+    const pillText = r.insurance_claim || '—';
+    return `
+      <tr>
+        <td class="b-date">${escapeHtml(formatDate(r.created_at))}</td>
+        <td class="b-name">${escapeHtml(r.full_name)}</td>
+        <td><a href="tel:${escapeHtml(r.phone)}">${escapeHtml(r.phone)}</a></td>
+        <td><a href="mailto:${escapeHtml(r.email)}">${escapeHtml(r.email)}</a></td>
+        <td>${escapeHtml(r.address)}</td>
+        <td>${escapeHtml(r.service)}</td>
+        <td><span class="pill ${pillClass}">${escapeHtml(pillText)}</span></td>
+        <td class="msg-cell">${escapeHtml(r.message) || '—'}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// ---------- Search ----------
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) { renderTable(allBookings); return; }
+  const filtered = allBookings.filter(r =>
+    [r.full_name, r.phone, r.email, r.address, r.service].some(v => (v || '').toLowerCase().includes(q))
+  );
+  renderTable(filtered);
+});
+
+// ---------- Refresh ----------
+document.getElementById('refreshBtn').addEventListener('click', loadBookings);
+
+// ---------- CSV export ----------
+document.getElementById('exportBtn').addEventListener('click', () => {
+  if (allBookings.length === 0) return;
+  const headers = ['Submitted','Name','Phone','Email','Address','Service','Insurance Claim','Message'];
+  const rows = allBookings.map(r => [
+    formatDate(r.created_at), r.full_name, r.phone, r.email, r.address, r.service, r.insurance_claim || '', r.message || ''
+  ]);
+  const csv = [headers, ...rows]
+    .map(row => row.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(','))
+    .join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `topguard-bookings-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
