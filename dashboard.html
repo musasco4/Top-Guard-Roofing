@@ -140,9 +140,9 @@
       </div>
       <button type="submit" class="btn" id="loginBtn">Sign In</button>
     </form>
-  <!-- <div class="setup-note">
+    <div class="setup-note">
       No account yet? Create one from your Supabase project under <strong>Authentication → Users → Add User</strong>, then sign in here with that email and password. See <code>supabase-setup-guide.md</code> for full steps.
-    </div> -->
+    </div>
   </div>
 </div>
 
@@ -263,14 +263,7 @@ function showError(msg){
   errorBanner.classList.add('show');
 }
 
-function configured(){
-  return SUPABASE_URL !== 'https://hdhhfjyzvslehlqbpcws.supabase.co' && SUPABASE_ANON_KEY !== 'sb_publishable_WZyLOBQ_F6BccA98f845qA_NUMtURRq';
-}
-
-if (!configured()) {
-  loginError.textContent = 'This dashboard isn\'t connected to Supabase yet — add your Project URL and anon key in the script near the bottom of this file (search for SUPABASE_URL).';
-  loginError.classList.add('show');
-} else if (typeof window.supabase === 'undefined') {
+if (typeof window.supabase === 'undefined') {
   loginError.textContent = 'Could not load the Supabase library (the CDN script may be blocked). Check your internet connection or try a different browser/network.';
   loginError.classList.add('show');
 } else if (!/^https:\/\/.+\.supabase\.co$/.test(SUPABASE_URL)) {

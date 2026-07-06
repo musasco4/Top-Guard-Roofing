@@ -1184,12 +1184,6 @@ const formNote = document.getElementById('formNote');
 leadForm.addEventListener('submit', async function(e){
   e.preventDefault();
 
-  if (SUPABASE_URL === 'https://hdhhfjyzvslehlqbpcws.supabase.co') {
-    formNote.textContent = 'Booking storage isn\'t connected yet — add your Supabase URL and key in the script.';
-    formNote.style.color = 'var(--red)';
-    return;
-  }
-
   const payload = {
     full_name: document.getElementById('f_name').value,
     phone: document.getElementById('f_phone').value,
