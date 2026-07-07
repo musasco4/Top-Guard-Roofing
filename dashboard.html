@@ -122,6 +122,10 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   .pill.no{background:#e9edf1;color:var(--slate);}
   .pill.unknown{background:#f1f3f5;color:var(--slate);}
   .msg-cell{max-width:220px;color:var(--slate);font-size:13px;}
+  .del-btn{background:none;border:1px solid var(--line);color:var(--slate);width:32px;height:32px;border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .15s ease;}
+  .del-btn svg{width:15px;height:15px;}
+  .del-btn:hover{background:#fdecec;border-color:#f3b9b9;color:var(--red-dark);}
+  .del-btn:disabled{opacity:.4;cursor:not-allowed;}
   .empty-state, .loading-state{padding:60px 20px;text-align:center;color:var(--slate);}
   .empty-state svg, .loading-state svg{width:36px;height:36px;color:var(--slate);opacity:.4;margin:0 auto 14px;}
   .error-banner{background:#fdecec;border:1px solid #f3b9b9;color:var(--red-dark);font-size:13.5px;padding:14px 18px;border-radius:6px;margin-bottom:20px;display:none;}
@@ -153,9 +157,9 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
       </div>
       <button type="submit" class="btn" id="loginBtn">Sign In</button>
     </form>
-   <!-- <div class="setup-note">
+    <div class="setup-note">
       No account yet? Create one from your Supabase project under <strong>Authentication → Users → Add User</strong>, then sign in here with that email and password. See <code>supabase-setup-guide.md</code> for full steps.
-    </div> -->
+    </div>
   </div>
 </div>
 
@@ -209,6 +213,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
             <th>Service</th>
             <th>Insurance</th>
             <th>Message</th>
+            <th></th>
           </tr>
         </thead>
         <tbody id="bookingsBody"></tbody>
@@ -243,11 +248,21 @@ function reportGlobalError(msg){
     le.classList.add('show');
   }
 }
+// Browser extensions (crypto wallets, password managers, ad blockers, etc.)
+// inject scripts into every page and sometimes throw their own unrelated
+// errors. Without filtering, those get mistaken for problems with this page.
+function isExtensionNoise(text){
+  return /metamask|ethereum|wallet|chrome-extension:\/\/|moz-extension:\/\//i.test(text || '');
+}
 window.addEventListener('error', (e) => {
+  if (isExtensionNoise(e.message) || isExtensionNoise(e.filename)) return;
   reportGlobalError('A script error occurred: ' + e.message + '. Check the browser console for details.');
 });
 window.addEventListener('unhandledrejection', (e) => {
-  reportGlobalError('Request failed: ' + (e.reason && e.reason.message ? e.reason.message : e.reason) + '. Check the browser console for details.');
+  const reasonText = e.reason && e.reason.message ? e.reason.message : String(e.reason);
+  const stackText = e.reason && e.reason.stack ? e.reason.stack : '';
+  if (isExtensionNoise(reasonText) || isExtensionNoise(stackText)) return;
+  reportGlobalError('Request failed: ' + reasonText + '. Check the browser console for details.');
 });
 
 // ============================================================
@@ -436,6 +451,9 @@ function renderTable(rows){
         <td>${escapeHtml(r.service)}</td>
         <td><span class="pill ${pillClass}">${escapeHtml(pillText)}</span></td>
         <td class="msg-cell">${escapeHtml(r.message) || '—'}</td>
+        <td><button class="del-btn" data-id="${escapeHtml(r.id)}" data-name="${escapeHtml(r.full_name)}" title="Delete this booking">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        </button></td>
       </tr>
     `;
   }).join('');
@@ -453,6 +471,35 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
 
 // ---------- Refresh ----------
 document.getElementById('refreshBtn').addEventListener('click', loadBookings);
+
+// ---------- Delete booking ----------
+document.getElementById('bookingsBody').addEventListener('click', async (e) => {
+  const btn = e.target.closest('.del-btn');
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  const name = btn.dataset.name;
+
+  if (!confirm(`Delete the booking from "${name}"? This can't be undone.`)) return;
+
+  btn.disabled = true;
+  errorBanner.classList.remove('show');
+
+  const { error } = await supabaseClient
+    .from('bookings')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    showError('Could not delete booking: ' + error.message + '. Make sure a delete policy exists on the bookings table for authenticated users.');
+    btn.disabled = false;
+    return;
+  }
+
+  allBookings = allBookings.filter(b => b.id !== id);
+  renderStats(allBookings);
+  renderTable(allBookings);
+});
 
 // ---------- CSV export ----------
 document.getElementById('exportBtn').addEventListener('click', () => {
